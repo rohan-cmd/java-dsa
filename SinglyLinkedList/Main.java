@@ -18,8 +18,6 @@ class LinkedList{
         }
     } 
 
-
-
     public void printLL(){
         Node temp = head;
         while (temp != null) {
