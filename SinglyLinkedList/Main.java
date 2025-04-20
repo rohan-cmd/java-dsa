@@ -18,6 +18,18 @@ class LinkedList{
         }
     } 
 
+    public void append(int value){
+        Node newNode = new Node(value);
+        if (head==null) {
+            head = newNode;
+            tail = head;
+        }else{
+            tail.next = newNode;
+            tail = newNode;
+        }
+        length++;
+    }
+
     public void printLL(){
         Node temp = head;
         while (temp != null) {
