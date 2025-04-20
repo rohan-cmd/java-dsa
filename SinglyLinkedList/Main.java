@@ -30,6 +30,24 @@ class LinkedList{
         length++;
     }
 
+    public void removeLast(){
+        if (head==null && tail==null) {
+            return;
+        }
+        if(head==tail){
+            head = null;
+            tail = null;
+        }else{
+            Node temp = head;
+            while (temp.next.next != null) {
+                temp = temp.next;
+            }
+            temp.next = null;
+            tail = temp;
+        }
+        length--;
+    }
+
     public void printLL(){
         Node temp = head;
         while (temp != null) {
@@ -40,10 +58,16 @@ class LinkedList{
     }
 
     public void getHead(){
+        if (head==null) {
+            return;
+        }
         System.out.println("Head : " + head.value);
     }
 
     public void getTail(){
+        if (tail==null) {
+            return;
+        }
         System.out.println("Head : " + tail.value);
     }
 
@@ -57,14 +81,22 @@ public class Main{
         LinkedList LL = new LinkedList();
 
         LL.append(2);
-        LL.append(4);
-        LL.append(6);
-        LL.append(8);
-        LL.append(10);
+        // LL.append(4);
+        // LL.append(6);
+        // LL.append(8);
+        // LL.append(10);
 
         LL.printLL();
         LL.getHead();
         LL.getTail();
         LL.getLength();
+
+        LL.removeLast();
+
+        LL.printLL();
+        LL.getHead();
+        LL.getTail();
+        LL.getLength();
+
     }
 }
