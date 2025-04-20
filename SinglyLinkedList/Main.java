@@ -33,7 +33,7 @@ class LinkedList{
     public void printLL(){
         Node temp = head;
         while (temp != null) {
-            System.out.print(temp.value + " ->");
+            System.out.print(temp.value + " -> ");
             temp = temp.next;
         }
         System.out.println();
@@ -55,5 +55,16 @@ class LinkedList{
 public class Main{
     public static void main(String[] args) {
         LinkedList LL = new LinkedList();
+
+        LL.append(2);
+        LL.append(4);
+        LL.append(6);
+        LL.append(8);
+        LL.append(10);
+
+        LL.printLL();
+        LL.getHead();
+        LL.getTail();
+        LL.getLength();
     }
 }
