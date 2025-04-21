@@ -101,6 +101,48 @@ class DoublyLinkedList{
         temp.value  = value;
     }
 
+    public void insert(int index, int value){
+        if (index<0 || index>length) {
+            return;
+        }
+        if (index==0) {
+            prepend(value);
+            return;
+        }
+        if (index==length) {
+            append(value);
+            return;
+        }
+        Node newNode = new Node(value);
+        Node prev = getNode(index-1);
+        Node next = prev.next;
+        prev.next = newNode;
+        newNode.next = next;
+        newNode.prev = prev;
+        next.prev = newNode;
+        length++;
+    }
+
+    public void remove(int index){
+        if (index<0 || index>=length) {
+            return;
+        }
+        if (index==0) {
+            removeFirst();
+            return;
+        }
+        if (index==length-1) {
+            removeLast();
+            return;
+        }
+        Node temp = getNode(index);
+        temp.prev.next = temp.next;
+        temp.next.prev = temp.prev;
+        temp.next = null;
+        temp.prev = null; 
+        length--;
+    }
+
     public void reverseDLL(){
         Node temp = tail;
         while (temp != null) {
@@ -161,6 +203,10 @@ public class Main {
         // DLL.removeFirst();
 
         // DLL.setNode(4, 100);
+
+        // DLL.insert(4, 100);
+
+        DLL.remove(4);
 
         DLL.printDLL();
         DLL.getHead();
