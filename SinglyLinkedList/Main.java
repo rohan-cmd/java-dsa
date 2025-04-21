@@ -3,7 +3,7 @@ package SinglyLinkedList;
 class LinkedList{
     private Node head;
     private Node tail;
-    int length;
+    private int length;
 
     LinkedList(){
         this.length = 0;
@@ -157,7 +157,7 @@ class LinkedList{
         if (tail==null) {
             return;
         }
-        System.out.println("Head : " + tail.value);
+        System.out.println("Tail : " + tail.value);
     }
 
     public void getLength(){
