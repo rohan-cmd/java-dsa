@@ -143,7 +143,7 @@ class DoublyLinkedList{
         length--;
     }
 
-    public void reverseDLL(){
+    public void printReverseDLL(){
         Node temp = tail;
         while (temp != null) {
             System.out.print(temp.value + " -> ");
