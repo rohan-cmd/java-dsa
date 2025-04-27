@@ -50,5 +50,9 @@ public class Main {
         bst.insert(40);
         bst.insert(70);
         System.out.println("Root : " + bst.root.value);
+        System.out.println(bst.root.left.value);
+        System.out.println(bst.root.left.right.value);
+        System.out.println(bst.root.right.value);
+        System.out.println(bst.root.right.right.value);
     }
 }
