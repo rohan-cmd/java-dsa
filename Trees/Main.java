@@ -39,20 +39,46 @@ class BinarySearchTree{
             }
         }
     }
+
+    public boolean contains(int value){
+        if (root==null) {
+            return false;
+        }
+
+        Node temp = root;
+        while (temp!=null) {
+            if (temp.value==value) {
+                return true;
+            }
+            if (value<temp.value) {
+                temp = temp.left;
+            }else{
+                temp = temp.right;
+            }
+        }
+        return false;
+    }
 }
 
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(50);
         bst.insert(10);
-        bst.insert(60);
-        bst.insert(40);
-        bst.insert(70);
+        bst.insert(7);
+        bst.insert(5);
+        bst.insert(8);
+        bst.insert(14);
+        bst.insert(11);
+        bst.insert(15);
         System.out.println("Root : " + bst.root.value);
-        System.out.println(bst.root.left.value);
-        System.out.println(bst.root.left.right.value);
-        System.out.println(bst.root.right.value);
-        System.out.println(bst.root.right.right.value);
+        // System.out.println(bst.root.left.value); 
+        // System.out.println(bst.root.right.value); 
+        // System.out.println(bst.root.left.left.value);
+        // System.out.println(bst.root.left.right.value);
+        // System.out.println(bst.root.right.left.value); 
+        // System.out.println(bst.root.right.right.value); 
+
+        System.out.println(bst.contains(13));
+
     }
 }
