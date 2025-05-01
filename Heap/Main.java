@@ -45,19 +45,66 @@ class Heap {
             current = parent(current);
         }
     }
+
+    public Integer remove(){
+
+        if (heap.size()==0) {
+            return null;
+        }
+
+        if (heap.size()==1) {
+            return heap.remove(0);
+        }
+
+        int maxHeap = heap.get(0);
+        heap.set(0, heap.remove(heap.size()-1));
+        sinkDown(0);
+        return maxHeap;
+    }
+
+    private void sinkDown(int index){
+        int maxIndex = index;
+
+        while (true) {
+            int leftIndex = leftChild(index);
+            int rightIndex = rightChild(index);
+
+            if (leftIndex<heap.size() && heap.get(leftIndex)>heap.get(maxIndex)) {
+                maxIndex = leftIndex;
+            }
+
+            if (rightIndex<heap.size() && heap.get(rightIndex)>heap.get(maxIndex)) {
+                maxIndex = rightIndex;
+            }
+
+            if (maxIndex!=index) {
+                swap(maxIndex, index);
+                index = maxIndex;
+            }else{
+                return;
+            }
+
+        }
+
+    }
+
 }
     
 public class Main {
     public static void main(String[] args) {
         Heap hp = new Heap();
 
-        hp.insert(78);
-        hp.insert(60);
+        hp.insert(95);
+        hp.insert(75);
+        hp.insert(80);
         hp.insert(55);
-        hp.insert(99);
-        hp.insert(40);
-        hp.insert(10);
-        hp.insert(30);
+        hp.insert(60);
+        hp.insert(50);
+        hp.insert(65);
+
+        System.out.println(hp.getHeap());
+
+        hp.remove();
 
         System.out.println(hp.getHeap());
     }
