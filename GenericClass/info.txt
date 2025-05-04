@@ -1,0 +1,6 @@
+In Java, a generic class is a class that can work with different data types without being rewritten for each type. Generics enable type safety and code reusability by allowing you to specify a type parameter when creating objects of the class.
+
+✅ Why use Generics?
+- Type safety: Errors are caught at compile time
+- Code reusability: Same class can be used for multiple data types
+- Avoid casting: No need for type conversion
