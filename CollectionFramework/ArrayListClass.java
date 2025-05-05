@@ -2,10 +2,11 @@ package CollectionFramework;
 
 import java.util.*;
 
-public class Array_List {
+public class ArrayListClass {
    public static void main(String[] args) {
     
-      List<Integer> list = new ArrayList();
+      List<Integer> list = new ArrayList(); // ArrayList implementation
+      // List<Integer> list = new LinkedList(); // LinkedList implementation
 
       list.add(1); // add element at end
       list.add(2);
