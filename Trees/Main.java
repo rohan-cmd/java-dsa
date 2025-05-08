@@ -59,6 +59,28 @@ class BinarySearchTree{
         return false;
     }
 
+    // Insert using recusrion
+    private Node rInsert(Node currNode, int value){
+        if (currNode==null){
+            return new Node(value);
+        }
+
+        if (value<currNode.value) {
+            currNode.left = rInsert(currNode.left, value);
+        }else if (value>currNode.value) {
+            currNode.right = rInsert(currNode.right, value);
+        }
+
+        return currNode;
+    }
+
+    public void rInsert(int value){
+        if (root==null){
+            root = new Node(value);
+        }
+        rInsert(root, value);
+    }
+
     // Contains using recusrion
     private boolean rContains(Node currentNode, int value){
         if (currentNode==null) return false;
@@ -80,14 +102,14 @@ class BinarySearchTree{
 public class Main {
     public static void main(String[] args) {
         BinarySearchTree bst = new BinarySearchTree();
-        bst.insert(10);
-        bst.insert(7);
-        bst.insert(5);
-        bst.insert(8);
-        bst.insert(14);
-        bst.insert(11);
-        bst.insert(15);
-        System.out.println("Root : " + bst.root.value);
+        // bst.insert(10);
+        // bst.insert(7);
+        // bst.insert(5);
+        // bst.insert(8);
+        // bst.insert(14);
+        // bst.insert(11);
+        // bst.insert(15);
+        // System.out.println("Root : " + bst.root.value);
         // System.out.println(bst.root.left.value); 
         // System.out.println(bst.root.right.value); 
         // System.out.println(bst.root.left.left.value);
@@ -96,6 +118,16 @@ public class Main {
         // System.out.println(bst.root.right.right.value); 
 
         // System.out.println(bst.contains(13));
+
+        bst.rInsert(10);
+        bst.rInsert(7);
+        bst.rInsert(5);
+        bst.rInsert(8);
+        bst.rInsert(14);
+        bst.rInsert(11);
+        bst.rInsert(15);
+        System.out.println("Root : " + bst.root.value);
+
         System.out.println(bst.rContains(11));
 
     }
