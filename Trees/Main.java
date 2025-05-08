@@ -58,6 +58,23 @@ class BinarySearchTree{
         }
         return false;
     }
+
+    // Contains using recusrion
+    private boolean rContains(Node currentNode, int value){
+        if (currentNode==null) return false;
+
+        if (currentNode.value==value) return true;
+
+        if (value<currentNode.value) {
+            return rContains(currentNode.left, value);
+        }else{
+            return rContains(currentNode.right, value);
+        }
+    }
+
+    public boolean rContains(int value){
+        return rContains(root, value);
+    }
 }
 
 public class Main {
@@ -78,7 +95,8 @@ public class Main {
         // System.out.println(bst.root.right.left.value); 
         // System.out.println(bst.root.right.right.value); 
 
-        System.out.println(bst.contains(13));
+        // System.out.println(bst.contains(13));
+        System.out.println(bst.rContains(11));
 
     }
 }
