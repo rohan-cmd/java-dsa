@@ -97,6 +97,31 @@ class BinarySearchTree{
     public boolean rContains(int value){
         return rContains(root, value);
     }
+
+        // Delete using recusrion
+        private Node rDelete(Node currNode, int value){
+            if (currNode==null){
+                return null;
+            }
+    
+            if (value<currNode.value) {
+                currNode.left = rInsert(currNode.left, value);
+            }else if (value>currNode.value) {
+                currNode.right = rInsert(currNode.right, value);
+            }else{
+                if (currNode.left==null && currNode.right==null) {
+                    return null;
+                }else if(currNode.left==null){
+                    currNode = currNode.right;
+                }else if(currNode.right==null){
+                    currNode = currNode.left;
+                }else{
+
+                }
+            }
+    
+            return currNode;
+        }
 }
 
 public class Main {
