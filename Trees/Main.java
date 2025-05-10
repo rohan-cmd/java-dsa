@@ -98,30 +98,43 @@ class BinarySearchTree{
         return rContains(root, value);
     }
 
-        // Delete using recusrion
-        private Node rDelete(Node currNode, int value){
-            if (currNode==null){
-                return null;
-            }
-    
-            if (value<currNode.value) {
-                currNode.left = rInsert(currNode.left, value);
-            }else if (value>currNode.value) {
-                currNode.right = rInsert(currNode.right, value);
-            }else{
-                if (currNode.left==null && currNode.right==null) {
-                    return null;
-                }else if(currNode.left==null){
-                    currNode = currNode.right;
-                }else if(currNode.right==null){
-                    currNode = currNode.left;
-                }else{
-
-                }
-            }
-    
-            return currNode;
+    // Delete using recusrion
+    private Node rDelete(Node currNode, int value){
+        if (currNode==null){
+            return null;
         }
+
+        if (value<currNode.value) {
+            currNode.left = rDelete(currNode.left, value);
+        }else if (value>currNode.value) {
+            currNode.right = rDelete(currNode.right, value);
+        }else{
+            if (currNode.left==null && currNode.right==null) {
+                return null;
+            }else if(currNode.left==null){
+                currNode = currNode.right;
+            }else if(currNode.right==null){
+                currNode = currNode.left;
+            }else{
+                int subTreeMin = minValue(currNode.right);
+                currNode.value = subTreeMin;
+                currNode.right = rDelete(currNode.right, subTreeMin);
+            }
+        }
+    
+        return currNode;
+    }
+
+    public void rDelete(int value){
+        rDelete(root, value);
+    }
+
+    public int minValue(Node currNode){
+        while (currNode.left!=null) {
+            currNode = currNode.left;
+        }
+        return currNode.value;
+    }
 }
 
 public class Main {
@@ -154,6 +167,9 @@ public class Main {
         System.out.println("Root : " + bst.root.value);
 
         System.out.println(bst.rContains(11));
+        
+        bst.rDelete(11);
 
+        System.out.println(bst.rContains(11));
     }
 }
