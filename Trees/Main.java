@@ -1,4 +1,5 @@
 package Trees;
+import java.util.*;
 
 class BinarySearchTree{
     Node root;
@@ -135,6 +136,28 @@ class BinarySearchTree{
         }
         return currNode.value;
     }
+
+    // BFS Traversal
+    public ArrayList<Integer> bfsTraversal(){
+        Queue<Node> que = new LinkedList<>();
+        ArrayList<Integer> res = new ArrayList<>();
+        if (root==null) {
+            System.out.println(res);
+            return res;
+        }
+        que.offer(root);
+        while (!que.isEmpty()) {
+            Node temp = que.poll();
+            res.add(temp.value);
+            if (temp.left!=null) {
+                que.offer(temp.left);
+            }
+            if (temp.right!=null) {
+                que.offer(temp.right);
+            }
+        }
+        return res;
+    }
 }
 
 public class Main {
@@ -168,8 +191,10 @@ public class Main {
 
         System.out.println(bst.rContains(11));
         
-        bst.rDelete(11);
+        // bst.rDelete(11);
 
-        System.out.println(bst.rContains(11));
+        // System.out.println(bst.rContains(11));
+
+        System.out.println(bst.bfsTraversal());
     }
 }
