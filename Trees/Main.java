@@ -158,6 +158,40 @@ class BinarySearchTree{
         }
         return res;
     }
+
+    // DFS PreOrder
+    /* 
+    public ArrayList<Integer> dfsPreOrder(){
+        ArrayList<Integer> res = new ArrayList<>();
+
+        class  Traverse {
+            Traverse(Node currNode){
+                res.add(currNode.value);
+                if(currNode.left!=null){
+                    new Traverse(currNode.left);
+                }
+                if(currNode.right!=null){
+                    new Traverse(currNode.right);
+                }                
+            }
+        }
+        new Traverse(root);
+        return res;
+    }
+    */
+    public ArrayList<Integer> dfsPreOrder() {
+        ArrayList<Integer> res = new ArrayList<>();
+        dfsPreOrderHelper(root, res);
+        return res;
+    }
+
+    private void dfsPreOrderHelper(Node node, ArrayList<Integer> res) {
+        if (node == null) return;
+        res.add(node.value);
+        dfsPreOrderHelper(node.left, res);
+        dfsPreOrderHelper(node.right, res);
+    }
+
 }
 
 public class Main {
@@ -196,5 +230,7 @@ public class Main {
         // System.out.println(bst.rContains(11));
 
         System.out.println(bst.bfsTraversal());
+
+        System.out.println(bst.dfsPreOrder());
     }
 }
