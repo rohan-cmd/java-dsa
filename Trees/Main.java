@@ -192,6 +192,40 @@ class BinarySearchTree{
         dfsPreOrderHelper(node.right, res);
     }
 
+    // DFS PostOrder
+    /* 
+    public ArrayList<Integer> dfsPostOrder(){
+        ArrayList<Integer> res = new ArrayList<>();
+
+        class  Traverse {
+            Traverse(Node currNode){
+                if(currNode.left!=null){
+                    new Traverse(currNode.left);
+                }
+                if(currNode.right!=null){
+                    new Traverse(currNode.right);
+                }
+                res.add(currNode.value);                                    
+            }
+        }
+        new Traverse(root);
+        return res;
+    }
+    */
+
+    public ArrayList<Integer> dfsPostOrder() {
+        ArrayList<Integer> res = new ArrayList<>();
+        dfsPostOrderHelper(root, res);
+        return res;
+    }
+
+    private void dfsPostOrderHelper(Node node, ArrayList<Integer> res) {
+        if (node == null) return;
+        dfsPostOrderHelper(node.left, res);
+        dfsPostOrderHelper(node.right, res);
+        res.add(node.value);        
+    }
+    
 }
 
 public class Main {
@@ -232,5 +266,7 @@ public class Main {
         System.out.println(bst.bfsTraversal());
 
         System.out.println(bst.dfsPreOrder());
+
+        System.out.println(bst.dfsPostOrder());
     }
 }
