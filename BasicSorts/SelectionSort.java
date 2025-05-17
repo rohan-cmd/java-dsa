@@ -1,7 +1,7 @@
 package BasicSorts;
 
 public class SelectionSort {
-    public static int[] selectionSort(int[] nums){
+    public static void selectionSort(int[] nums){
         int minIndex;
         for(int i=0; i<nums.length-1; i++){
             minIndex = i;
@@ -16,8 +16,6 @@ public class SelectionSort {
                 nums[minIndex] = temp;
             }
         }
-
-        return nums;
     }
     public static void main(String[] args) {
         int[] nums = {4,2,6,5,1,3};
